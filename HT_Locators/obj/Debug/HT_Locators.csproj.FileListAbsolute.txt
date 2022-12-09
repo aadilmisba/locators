@@ -1,0 +1,2 @@
+C:\Users\UMISBAA\Documents\My Projects\HT_Locators\HT_Locators\obj\Debug\HT_Locators.csproj.AssemblyReference.cache
+C:\Users\UMISBAA\Documents\My Projects\HT_Locators\HT_Locators\obj\Debug\HT_Locators.csproj.CoreCompileInputs.cache
