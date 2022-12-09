@@ -60,17 +60,16 @@ namespace HT_Locators
             //NUnit.Framework.Assert for login is successful
             Assert.True(driver.FindElement(By.CssSelector("body")).Displayed, "The login is successful");
 
-            WebElement composeButton = (WebElement)driver.FindElement(By.XPath("//div[@jscontroller='eIu7Db']"));
+           var composeButton =driver.FindElement(By.XPath("//div[@jscontroller='eIu7Db']"));
             wait.Until(ExpectedConditions.ElementToBeClickable(composeButton));
             composeButton.Click();
 
 
-            //WebElement senderMail = (WebElement)driver.FindElement(By.XPath("//input[@role='combobox']"));
             var senderMail = driver.FindElement(By.CssSelector("input[role=combobox]"));
             wait.Until(ExpectedConditions.ElementToBeClickable(senderMail));
             senderMail.SendKeys("aadilmisba3@gmail.com");
 
-            //WebElement sentSubject = (WebElement)driver.FindElement(By.XPath("//input[@aria-label='Subject']"));
+
             var  sentSubject = driver.FindElement(By.Name("subjectbox"));
             sentSubject.SendKeys("Sample Subject");
 
@@ -90,6 +89,7 @@ namespace HT_Locators
 
             // Verify the draft content(addressee, subject and body – should be the same as in 3).
             var checkSenderMail = driver.FindElement(By.XPath("//div[@class='aoD hl']"));
+
             wait.Until(ExpectedConditions.ElementToBeClickable(checkSenderMail));
             //WebElement checkSubject = (WebElement)driver.FindElement(By.XPath("//input[@name ='subjectbox']"));
             var checkSubject = driver.FindElement(By.CssSelector("input[name=subjectbox]"));
