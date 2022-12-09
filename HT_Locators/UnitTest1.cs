@@ -37,12 +37,12 @@ namespace HT_Locators
         }
 
         [Test]
-        public void gmailTest()
+        public void GmailTest()
         {
 
             var usernameEnter = driver.FindElement(By.Id("identifierId"));
             usernameEnter.SendKeys("aadilmuhammadu@gmail.com");
-           NUnit.Framework.Assert.AreEqual(usernameEnter.GetAttribute("value"), "aadilmuhammadu@gmail.com");
+            Assert.AreEqual(usernameEnter.GetAttribute("value"), "aadilmuhammadu@gmail.com");
 
             //driver.FindElement(By.XPath("//span[contains(text(),'Next')]")).Click();
             driver.FindElement(By.Id("identifierNext")).Click();
