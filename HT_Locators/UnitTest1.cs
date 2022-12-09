@@ -40,8 +40,8 @@ namespace HT_Locators
         {
 
             WebElement usernameEnter = (WebElement)driver.FindElement(By.Id("identifierId"));
-            usernameEnter.SendKeys("shahadnaz807@gmail.com");
-           NUnit.Framework.Assert.AreEqual(usernameEnter.GetAttribute("value"), "shahadnaz807@gmail.com");
+            usernameEnter.SendKeys("aadilmuhammadu@gmail.com");
+           NUnit.Framework.Assert.AreEqual(usernameEnter.GetAttribute("value"), "aadilmuhammadu@gmail.com");
 
             //driver.FindElement(By.XPath("//span[contains(text(),'Next')]")).Click();
             driver.FindElement(By.Id("identifierNext")).Click();
@@ -49,8 +49,8 @@ namespace HT_Locators
             WebElement passwordEnter = (WebElement)driver.FindElement(By.XPath("//*[@id='password']//input"));
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(passwordEnter));
-            passwordEnter.SendKeys("Epaam123");
-            NUnit.Framework.Assert.AreEqual(passwordEnter.GetAttribute("value"), "Epaam123");
+            passwordEnter.SendKeys("Test@123");
+            NUnit.Framework.Assert.AreEqual(passwordEnter.GetAttribute("value"), "Test@123");
 
             //driver.FindElement(By.XPath("//span[contains(text(),'Next')]")).Click();
             driver.FindElement(By.Id("passwordNext")).Click();
@@ -67,14 +67,14 @@ namespace HT_Locators
             //WebElement senderMail = (WebElement)driver.FindElement(By.XPath("//input[@role='combobox']"));
             WebElement senderMail = (WebElement)driver.FindElement(By.CssSelector("input[role=combobox]"));
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(senderMail));
-            senderMail.SendKeys("shas8571@gmail.com");
+            senderMail.SendKeys("aadilmisba3@gmail.com");
 
             //WebElement sentSubject = (WebElement)driver.FindElement(By.XPath("//input[@aria-label='Subject']"));
             WebElement sentSubject = (WebElement)driver.FindElement(By.Name("subjectbox"));
             sentSubject.SendKeys("Sample Subject");
 
             WebElement sentTextbox = (WebElement)driver.FindElement(By.XPath("//div[@aria-label='Message Body']"));
-            sentTextbox.SendKeys("Shahad Mail");
+            sentTextbox.SendKeys("Test Mail");
             driver.FindElement(By.XPath("//img[@alt='Close']")).Click();
 
             WebElement draftsField = (WebElement)driver.FindElement(By.XPath("//a[contains(text(),'Drafts')]"));
@@ -95,9 +95,9 @@ namespace HT_Locators
             WebElement checkSubject = (WebElement)driver.FindElement(By.CssSelector("input[name=subjectbox]"));
             WebElement checkTextbox = (WebElement)driver.FindElement(By.XPath("//div[@role='textbox']"));
 
-            NUnit.Framework.Assert.AreEqual(checkSenderMail.Text, "shas8571@gmail.com");
+            NUnit.Framework.Assert.AreEqual(checkSenderMail.Text, "aadilmisba3@gmail.com");
             NUnit.Framework.Assert.AreEqual(checkSubject.GetAttribute("value"), "Sample Subject");
-            NUnit.Framework.Assert.AreEqual(checkTextbox.Text, "Shahad Mail");
+            NUnit.Framework.Assert.AreEqual(checkTextbox.Text, "Test Mail");
 
             driver.FindElement(By.XPath("//div[text()='Send']")).Click();
             WebElement sendField = (WebElement)driver.FindElement(By.XPath("//a[contains(text(),'Sent')]"));
