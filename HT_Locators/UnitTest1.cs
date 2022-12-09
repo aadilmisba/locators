@@ -2,6 +2,7 @@
 using System;
 using Nest;
 using NUnit.Framework;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -39,80 +40,79 @@ namespace HT_Locators
         public void gmailTest()
         {
 
-            WebElement usernameEnter = (WebElement)driver.FindElement(By.Id("identifierId"));
+            var usernameEnter = driver.FindElement(By.Id("identifierId"));
             usernameEnter.SendKeys("aadilmuhammadu@gmail.com");
            NUnit.Framework.Assert.AreEqual(usernameEnter.GetAttribute("value"), "aadilmuhammadu@gmail.com");
 
             //driver.FindElement(By.XPath("//span[contains(text(),'Next')]")).Click();
             driver.FindElement(By.Id("identifierNext")).Click();
 
-            WebElement passwordEnter = (WebElement)driver.FindElement(By.XPath("//*[@id='password']//input"));
+            var passwordEnter = driver.FindElement(By.XPath("//*[@id='password']//input"));
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(50));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(passwordEnter));
+
+            wait.Until(ExpectedConditions.ElementToBeClickable(passwordEnter));
             passwordEnter.SendKeys("Test@123");
-            NUnit.Framework.Assert.AreEqual(passwordEnter.GetAttribute("value"), "Test@123");
+            Assert.AreEqual(passwordEnter.GetAttribute("value"), "Test@123");
 
             //driver.FindElement(By.XPath("//span[contains(text(),'Next')]")).Click();
             driver.FindElement(By.Id("passwordNext")).Click();
 
             //NUnit.Framework.Assert for login is successful
-            NUnit.Framework.Assert.True(driver.FindElement(By.CssSelector("body")).Displayed, "The login is successful");
+            Assert.True(driver.FindElement(By.CssSelector("body")).Displayed, "The login is successful");
 
             WebElement composeButton = (WebElement)driver.FindElement(By.XPath("//div[@jscontroller='eIu7Db']"));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(composeButton));
+            wait.Until(ExpectedConditions.ElementToBeClickable(composeButton));
             composeButton.Click();
 
-            //Task.Delay(2000).Wait();
 
             //WebElement senderMail = (WebElement)driver.FindElement(By.XPath("//input[@role='combobox']"));
-            WebElement senderMail = (WebElement)driver.FindElement(By.CssSelector("input[role=combobox]"));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(senderMail));
+            var senderMail = driver.FindElement(By.CssSelector("input[role=combobox]"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(senderMail));
             senderMail.SendKeys("aadilmisba3@gmail.com");
 
             //WebElement sentSubject = (WebElement)driver.FindElement(By.XPath("//input[@aria-label='Subject']"));
-            WebElement sentSubject = (WebElement)driver.FindElement(By.Name("subjectbox"));
+            var  sentSubject = driver.FindElement(By.Name("subjectbox"));
             sentSubject.SendKeys("Sample Subject");
 
-            WebElement sentTextbox = (WebElement)driver.FindElement(By.XPath("//div[@aria-label='Message Body']"));
+            var sentTextbox = driver.FindElement(By.XPath("//div[@aria-label='Message Body']"));
             sentTextbox.SendKeys("Test Mail");
             driver.FindElement(By.XPath("//img[@alt='Close']")).Click();
 
-            WebElement draftsField = (WebElement)driver.FindElement(By.XPath("//a[contains(text(),'Drafts')]"));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(draftsField));
+            var draftsField = driver.FindElement(By.XPath("//a[contains(text(),'Drafts')]"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(draftsField));
             draftsField.Click();
 
-            WebElement searchMail = (WebElement)driver.FindElement(By.XPath("//div[@role='link']//span[contains(text(),'Sample Subject')]"));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(searchMail));
+            var searchMail = driver.FindElement(By.XPath("//div[@role='link']//span[contains(text(),'Sample Subject')]"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(searchMail));
             searchMail.Click();
-            NUnit.Framework.Assert.AreEqual(true, searchMail.Displayed); // Verify, that the mail presents in ‘Drafts’ folder.
+            Assert.AreEqual(true, searchMail.Displayed); // Verify, that the mail presents in ‘Drafts’ folder.
 
-            //Task.Delay(1000).Wait();   
 
             // Verify the draft content(addressee, subject and body – should be the same as in 3).
-            WebElement checkSenderMail = (WebElement)driver.FindElement(By.XPath("//div[@class='aoD hl']"));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(checkSenderMail));
+            var checkSenderMail = driver.FindElement(By.XPath("//div[@class='aoD hl']"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(checkSenderMail));
             //WebElement checkSubject = (WebElement)driver.FindElement(By.XPath("//input[@name ='subjectbox']"));
-            WebElement checkSubject = (WebElement)driver.FindElement(By.CssSelector("input[name=subjectbox]"));
-            WebElement checkTextbox = (WebElement)driver.FindElement(By.XPath("//div[@role='textbox']"));
+            var checkSubject = driver.FindElement(By.CssSelector("input[name=subjectbox]"));
+            var checkTextbox = driver.FindElement(By.XPath("//div[@role='textbox']"));
 
-            NUnit.Framework.Assert.AreEqual(checkSenderMail.Text, "aadilmisba3@gmail.com");
-            NUnit.Framework.Assert.AreEqual(checkSubject.GetAttribute("value"), "Sample Subject");
-            NUnit.Framework.Assert.AreEqual(checkTextbox.Text, "Test Mail");
+            Assert.AreEqual(checkSenderMail.Text, "aadilmisba3@gmail.com");
+            Assert.AreEqual(checkSubject.GetAttribute("value"), "Sample Subject");
+            Assert.AreEqual(checkTextbox.Text, "Test Mail");
 
             driver.FindElement(By.XPath("//div[text()='Send']")).Click();
-            WebElement sendField = (WebElement)driver.FindElement(By.XPath("//a[contains(text(),'Sent')]"));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(sendField));
+            var sendField = driver.FindElement(By.XPath("//a[contains(text(),'Sent')]"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(sendField));
             sendField.Click();
 
-            WebElement searchSentMail = (WebElement)driver.FindElement(By.XPath("//div[@role='link']//span[contains(text(),'Sample Subject')]"));
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(searchSentMail));
+            var searchSentMail = driver.FindElement(By.XPath("//div[@role='link']//span[contains(text(),'Sample Subject')]"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(searchSentMail));
             searchSentMail.Click();
-            //NUnit.Framework.Assert.AreEqual(true, searchSentMail.Displayed);
+            Assert.IsTrue(searchSentMail.Displayed);
 
-            WebElement InboxField = (WebElement)driver.FindElement(By.XPath("//a[contains(text(),'Inbox')]"));
+            var InboxField = driver.FindElement(By.XPath("//a[contains(text(),'Inbox')]"));
             InboxField.Click();
 
-            WebElement AccountField = (WebElement)driver.FindElement(By.CssSelector("img.gb_Ca.gbii"));
+            var AccountField = driver.FindElement(By.CssSelector("img.gb_Ca.gbii"));
             AccountField.Click();
             driver.SwitchTo().Frame("account");
             driver.FindElement(By.XPath("//div[text()='Sign out']")).Click();
